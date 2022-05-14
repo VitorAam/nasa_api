@@ -7,20 +7,40 @@ $('#btn').click(function(event){
         url: `https://api.nasa.gov/planetary/apod?api_key=${serverKey}${selectedDate}`,
         success: function (result){
             showToUser(result)
-        }
-    }) 
+            document.querySelector('#return').addEventListener('click', function(){
+                console.log("Teste")
+                document.querySelector('main').innerHTML = `<form>
+                <input type="date" id="date">
+                <button id="btn">Explore</button></form>`
+            })
+        }  
+    })
     } catch (erro) {
         console.log(erro)
     }
-    
 })
 
+//Essa função é para mostrar ao usuário os valores pegos pela requisição
+
 function showToUser(result){
+    //Estrutura condicional para apresentar elemento html para imagem ou vídeo a depender do media_type
     if(result.media_type == 'image'){
-        $('#video_image').html(`<img id="image" src="${result.url}" alt="${result.title}">`)
+        $('main').html(`<picture><img id="image" src="${result.url}" alt="${result.title}"></picture><h2>${result.title}</h2><p id="explanation">${result.explanation}</p><input type="button" id="return" value="Return">`)
     } else {
-        $('#video_image').html(`<iframe src="${result.url}" id="video"></iframe>`)
+        $('main').html(`<picture><iframe src="${result.url}" id="video"></iframe></picture><h2>${result.title}</h2><p id="explanation">${result.explanation}</p><input type="button" id="return" value="Return">`)
     }
-    
-    $('#explanation').html(`<strong>Text:</strong> ${result.explanation}`)
 }
+
+
+
+/*
+
+Linhas 19 até 23:
+
+Realizei teste e com a operação ternária funciona perfeitamente, da seguinte forma:
+
+$('#video_image').html(result.media_type == 'image'? `<img id="image" src="${result.url}" alt="${result.title}">` : `<iframe src="${result.url}" id="video"></iframe>`)
+
+Ocorre que achei que fica bem mais explicativa a leitura da forma como deixei
+
+*/
