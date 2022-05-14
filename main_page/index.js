@@ -1,12 +1,18 @@
 $('#btn').click(function(event){
+    //Retirando o padrão do forms
     event.preventDefault();
+    //Pegando o valor pelo input #date
     let selectedDate = $('#date').val();
+    //Chave cedida pela NASA para utilização da API
     const serverKey = 'aT1LRxrFFc2ggV3gXlcENwmFDfTq3ueFbmMXl9pa&date='
+    //Tentativa de requisição da API
     try{
        $.ajax({
         url: `https://api.nasa.gov/planetary/apod?api_key=${serverKey}${selectedDate}`,
         success: function (result){
+            //Função separada na linha 24
             showToUser(result)
+            //Função para reiniciar a página no clique do botão de return
             $('#return').click(function(){
                 document.location.reload(true);
             })
@@ -32,7 +38,7 @@ function showToUser(result){
 
 /*
 
-Linhas 19 até 23:
+Linhas 26 até 30:
 
 Realizei teste e com a operação ternária funciona perfeitamente, da seguinte forma:
 
