@@ -7,11 +7,8 @@ $('#btn').click(function(event){
         url: `https://api.nasa.gov/planetary/apod?api_key=${serverKey}${selectedDate}`,
         success: function (result){
             showToUser(result)
-            document.querySelector('#return').addEventListener('click', function(){
-                console.log("Teste")
-                document.querySelector('main').innerHTML = `<form>
-                <input type="date" id="date">
-                <button id="btn">Explore</button></form>`
+            $('#return').click(function(){
+                document.location.reload(true);
             })
         }  
     })
