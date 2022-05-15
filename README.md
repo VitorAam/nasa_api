@@ -2,11 +2,11 @@
 <hr>
 
 <h1>Descrição do projeto</h1>
-<hr>
+
 <p>Projeto em desenvolvimento para a utilização da API da NASA que permite a requisição de imagem/vídeo e texto de acordo com a data passada como parâmetro no input.
 
 Realizado durante o segundo módulo do curso de Desenvolvimento Web da Resilia</p>
-<hr>
+
 
 <h2>Demonstração da aplicação</h2>
-<hr>
+
